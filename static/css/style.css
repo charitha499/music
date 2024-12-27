@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+a {
+    margin-right: 10px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000; /* Black background */
+    color: #f5f5f5; /* Light grey-white text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+/* Header */
+h1 {
+    font-size: 2.5rem;
+    margin-top: 30px;
+    color: #ffffff; /* White for the title */
+    text-align: center;
+    text-shadow: 1px 1px 2px #7d7d7d; /* Subtle grey shadow */
+}
+
+/* Form */
+form {
+    background-color: #1c1c1c; /* Dark grey background for the form */
+    padding: 20px 40px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 400px;
+}
+
+/* Form Labels */
+form label {
+    font-weight: bold;
+    margin-top: 15px;
+    color: #f5f5f5; /* Light grey */
+}
+
+/* Form Inputs */
+form input[type="text"], 
+form input[type="file"] {
+    margin-top: 8px;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #cccccc; /* Light grey border */
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #2b2b2b; /* Slightly lighter grey input background */
+    color: #f5f5f5; /* Light grey text */
+}
+
+/* Form Button */
+form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #7d7d7d; /* Medium grey button */
+    color: #ffffff; /* White text */
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #a6a6a6; /* Lighter grey on hover */
+}
+
+/* Back to Home Link */
+a {
+    color: #f5f5f5; /* Light grey */
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+a:hover {
+    color: #ffffff; /* White on hover */
+    text-decoration: underline;
+}
+
+/* Page Responsiveness */
+@media (max-width: 600px) {
+    form {
+        padding: 15px 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    a {
+        font-size: 1rem;
+    }
+}

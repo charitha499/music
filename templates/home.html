@@ -1,0 +1,108 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <span>Welcome, {{ username }}!</span>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+    <hr>
+    
+    <h1>Music Player</h1>
+    <a href="{{ url_for('upload') }}">Upload a Song</a> |
+    <a href="{{ url_for('favorites') }}">View Favorites</a>
+    <hr>
+    
+    <h2>All Songs</h2>
+    <ul id="playlist">
+        {% for song in songs %}
+        <li>
+            <strong>{{ song[1] }}</strong> by <em>{{ song[2] }}</em> 
+            - <span>Played: {{ song[4] }} times</span>
+            <br>
+            <audio id="audio-{{ song[0] }}" controls>
+                <source src="{{ url_for('static', filename='music/' + song[3]) }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <!-- Play button -->
+            <button type="button" onclick="playSong('{{ song[0] }}')">Play</button>
+            <a href="{{ url_for('add_favorite', song_id=song[0]) }}">Add to Favorites</a>
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+
+    <!-- JavaScript Section -->
+    <script>
+        // Function to play the song and update play count
+        function playSong(songId) {
+            // Get the audio element by its ID
+            const audioElement = document.getElementById(`audio-${songId}`);
+            
+            if (audioElement) {
+                // Play the audio
+                audioElement.play();
+
+                // Send play count update to the server
+                fetch(`/play_song/${songId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                }).then(response => {
+                    if (!response.ok) {
+                        alert('Error updating play count.');
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            const playlist = document.querySelectorAll("#playlist audio");
+            playlist.forEach((audio, index) => {
+                audio.addEventListener("ended", () => {
+                    if (index + 1 < playlist.length) {
+                        playlist[index + 1].play();
+                    }
+                });
+            });
+        });
+     </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 
+    
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const playlist = document.querySelectorAll("#playlist audio");
+            playlist.forEach((audio, index) => {
+                audio.addEventListener("ended", () => {
+                    if (index + 1 < playlist.length) {
+                        playlist[index + 1].play();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+-->

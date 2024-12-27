@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favorites</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Favorites</h1>
+    <a href="/">Back to Home</a>
+    <hr>
+    <ul>
+        {% for song in favorite_songs %}
+        <li>
+            {{ song[1] }} by {{ song[2] }} 
+            <audio controls>
+                <source src="{{ url_for('static', filename='music/' + song[3]) }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <a href="/remove_favorite/{{ song[0] }}">Remove from Favorites</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
